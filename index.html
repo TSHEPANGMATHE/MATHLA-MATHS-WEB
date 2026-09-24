@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Mathla — CAPS Maths Tutor, Grades 10–12</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;700;800;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<div class="grain"></div>
+
+<nav>
+  <div class="logo">Math<span>la</span></div>
+  <div style="display:flex;align-items:center;gap:12px;">
+    <select id="langSelect" aria-label="Choose language">
+      <option value="en">English</option>
+      <option value="af">Afrikaans</option>
+      <option value="tn">Setswana</option>
+      <option value="nso">Sepedi</option>
+      <option value="zu">isiZulu</option>
+      <option value="ts">Xitsonga</option>
+    </select>
+    <button id="themeToggle" aria-label="Toggle light and dark mode" style="background:none;border:1px solid var(--border2);color:var(--white);width:34px;height:34px;border-radius:100px;cursor:pointer;font-size:14px;">☀️</button>
+  </div>
+</nav>
+
+<section id="hero">
+  <p class="kicker" data-i18n="eyebrow">CAPS-ALIGNED · GRADES 10–12</p>
+  <h1 data-i18n-html="h1">Find the gap.<br>Then <span class="hl">close it.</span></h1>
+  <p class="hero-sub" data-i18n="heroSub">Practice by topic, sit past-paper style question sets, and see exactly which sections of the CAPS syllabus are costing you marks — not just a final score.</p>
+  <div class="grade-picker" id="subjectPicker" style="margin-bottom:14px;">
+    <button class="grade-btn active" data-subject="pure">Mathematics</button>
+    <button class="grade-btn" data-subject="lit">Mathematical Literacy</button>
+  </div>
+  <div class="grade-picker" id="gradePicker">
+    <button class="grade-btn active" data-grade="10"><span data-i18n="gradeWord">Grade</span> 10</button>
+    <button class="grade-btn" data-grade="11"><span data-i18n="gradeWord">Grade</span> 11</button>
+    <button class="grade-btn" data-grade="12"><span data-i18n="gradeWord">Grade</span> 12</button>
+  </div>
+  <div class="stat-strip">
+    <div><b id="statAttempted">0</b><span data-i18n="statAttemptedLabel">Questions attempted</span></div>
+    <div><b id="statAccuracy">—</b><span data-i18n="statAccuracyLabel">Overall accuracy</span></div>
+    <div><b id="statTopics">12</b><span data-i18n="statTopicsLabel">Topics live</span></div>
+  </div>
+</section>
+
+<section id="topics">
+  <p class="kicker" data-i18n="topicsKicker">PRACTICE BY TOPIC</p>
+  <h2 class="title" data-i18n="topicsTitle">Pick a topic. Every question is marked instantly.</h2>
+  <div class="topic-grid" id="topicGrid"></div>
+</section>
+
+<section id="dashboard">
+  <p class="kicker" data-i18n="dashKicker">YOUR WEAKNESS MAP</p>
+  <h2 class="title" data-i18n="dashTitle">Built from every quiz you've actually taken, not a guess.</h2>
+  <div class="dash-grid">
+    <div class="dash-card">
+      <h4 data-i18n="weakHeader">WEAKEST TOPICS</h4>
+      <div id="weakList"></div>
+    </div>
+    <div class="dash-card">
+      <h4 data-i18n="strongHeader">STRONGEST TOPICS</h4>
+      <div id="strongList"></div>
+    </div>
+  </div>
+</section>
+
+<section id="papers">
+  <p class="kicker" data-i18n="papersKicker">QUESTION PAPERS</p>
+  <h2 class="title" data-i18n="papersTitle">Full-length practice sets pulled from your grade's topics — plus real past papers from the Department of Basic Education.</h2>
+  <div class="paper-list" id="paperList"></div>
+</section>
+
+<footer data-i18n="footer">Mathla — built as a CAPS-aligned study tool. Not affiliated with, endorsed by, or produced by the Department of Basic Education. Progress is stored on this device only.</footer>
+
+<!-- quiz modal -->
+<div class="overlay" id="quizOverlay">
+  <div class="modal">
+    <button class="close-x" id="closeQuiz">&times;</button>
+    <h3 id="quizTitle">Topic</h3>
+    <p class="prog" id="quizProg">Question 1 of 3</p>
+    <div id="quizBody"></div>
+    <div class="modal-actions"><span></span><button class="next-btn" id="nextBtn">Next</button></div>
+  </div>
+</div>
+
+<!-- paper modal -->
+<div class="overlay" id="paperOverlay">
+  <div class="modal paper-modal">
+    <button class="close-x" id="closePaper">&times;</button>
+    <h3 id="paperTitleEl">Paper</h3>
+    <p class="prog" id="paperMetaEl"></p>
+    <ol id="paperQList"></ol>
+    <button class="print-btn" id="printBtn" data-i18n="printBtn">Print / save as PDF</button>
+  </div>
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>
